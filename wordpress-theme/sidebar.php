@@ -10,15 +10,16 @@
 <div class="sidebar-widget">
     <div class="widget-header">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
-            <polyline points="16 7 22 7 22 13"></polyline>
+            <path d="M12 20V10"></path>
+            <path d="M18 20V4"></path>
+            <path d="M6 20v-4"></path>
         </svg>
-        <h3 class="widget-title"><?php esc_html_e('Most Read', 'techpolse'); ?></h3>
+        <h3 class="widget-title"><?php esc_html_e('Trending Now', 'techpolse'); ?></h3>
     </div>
     
     <div class="popular-articles">
         <?php
-        $popular = techpolse_get_popular_posts(3);
+        $popular = techpolse_get_popular_posts(4);
         $count = 1;
         
         if ($popular->have_posts()) :
@@ -29,7 +30,11 @@
                 <div class="popular-article-content">
                     <h4 class="popular-article-title"><?php the_title(); ?></h4>
                     <span class="popular-article-views">
-                        <?php echo get_comments_number(); ?> <?php esc_html_e('comments', 'techpolse'); ?>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-right: 4px;">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <?php echo techpolse_reading_time(); ?>
                     </span>
                 </div>
             </a>
@@ -46,10 +51,11 @@
 <div class="sidebar-widget">
     <div class="widget-header">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"></path>
-            <path d="M7 7h.01"></path>
+            <path d="m15 5 6.3 6.3a2.4 2.4 0 0 1 0 3.4L17 19"></path>
+            <path d="M9.586 5.586A2 2 0 0 0 8.172 5H3a1 1 0 0 0-1 1v5.172a2 2 0 0 0 .586 1.414L8 18"></path>
+            <circle cx="6.5" cy="9.5" r=".5" fill="currentColor"></circle>
         </svg>
-        <h3 class="widget-title"><?php esc_html_e('Tags', 'techpolse'); ?></h3>
+        <h3 class="widget-title"><?php esc_html_e('Popular Tags', 'techpolse'); ?></h3>
     </div>
     
     <div class="tags-cloud">
@@ -57,7 +63,7 @@
         $tags = get_tags(array(
             'orderby' => 'count',
             'order'   => 'DESC',
-            'number'  => 10,
+            'number'  => 12,
         ));
         
         foreach ($tags as $tag) {
@@ -69,11 +75,17 @@
 
 <!-- Newsletter Widget -->
 <div class="sidebar-widget newsletter-widget">
-    <h3 class="newsletter-title">
-        <?php echo esc_html(get_theme_mod('newsletter_title', 'Subscribe to Newsletter')); ?>
-    </h3>
+    <div class="widget-header" style="margin-bottom: 0.5rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+        </svg>
+        <h3 class="newsletter-title">
+            <?php echo esc_html(get_theme_mod('newsletter_title', 'Stay Updated')); ?>
+        </h3>
+    </div>
     <p class="newsletter-description">
-        <?php echo esc_html(get_theme_mod('newsletter_description', 'Get the latest articles and tech tips delivered directly to your inbox')); ?>
+        <?php echo esc_html(get_theme_mod('newsletter_description', 'Get the latest articles, tutorials, and tech insights delivered straight to your inbox. No spam, unsubscribe anytime.')); ?>
     </p>
     
     <form class="newsletter-form" action="#" method="post">
@@ -81,13 +93,32 @@
             type="email" 
             name="email" 
             class="newsletter-input" 
-            placeholder="<?php esc_attr_e('Your email address', 'techpolse'); ?>" 
+            placeholder="<?php esc_attr_e('Enter your email', 'techpolse'); ?>" 
             required
         >
         <button type="submit" class="btn btn-primary" style="width: 100%;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
+                <path d="m22 2-7 20-4-9-9-4Z"></path>
+                <path d="M22 2 11 13"></path>
+            </svg>
             <?php esc_html_e('Subscribe', 'techpolse'); ?>
         </button>
     </form>
+</div>
+
+<!-- About Widget (Optional) -->
+<div class="sidebar-widget">
+    <div class="widget-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 16v-4"></path>
+            <path d="M12 8h.01"></path>
+        </svg>
+        <h3 class="widget-title"><?php esc_html_e('About', 'techpolse'); ?></h3>
+    </div>
+    <p style="font-size: 0.9rem; color: var(--muted-foreground); line-height: 1.7;">
+        <?php echo esc_html(get_theme_mod('about_text', 'TechPolse is your trusted source for cutting-edge technology news, in-depth tutorials, and expert insights. Join our community of tech enthusiasts.')); ?>
+    </p>
 </div>
 
 <?php
