@@ -4,6 +4,7 @@ import { Footer } from '@/components/layout/Footer';
 import { ArticleCard } from '@/components/blog/ArticleCard';
 import { CategoryTabs } from '@/components/blog/CategoryTabs';
 import { FeaturedSection } from '@/components/blog/FeaturedSection';
+import { CategoriesSection } from '@/components/blog/CategoriesSection';
 import { Sidebar } from '@/components/blog/Sidebar';
 import { articles, getFeaturedArticle } from '@/data/articles';
 import { ChevronUp } from 'lucide-react';
@@ -34,6 +35,9 @@ const Index = () => {
         <div className="container py-8">
           {/* Hero Featured Article */}
           <FeaturedSection article={featuredArticle} />
+
+          {/* Categories Section */}
+          <CategoriesSection />
 
           {/* Category Tabs */}
           <CategoryTabs />
