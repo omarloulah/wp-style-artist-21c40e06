@@ -37,7 +37,7 @@ export function Sidebar() {
       <div className="rounded-xl border border-border bg-card p-6">
         <div className="flex items-center gap-2 mb-4">
           <TrendingUp className="h-5 w-5 text-primary" />
-          <h3 className="font-semibold text-card-foreground">الأكثر قراءة</h3>
+          <h3 className="font-semibold text-card-foreground">Most Read</h3>
         </div>
         <ul className="space-y-4">
           {popularArticles.map((article, index) => (
@@ -54,7 +54,7 @@ export function Sidebar() {
                     {article.title}
                   </h4>
                   <span className="text-xs text-muted-foreground">
-                    {article.views} مشاهدة
+                    {article.views} views
                   </span>
                 </div>
               </Link>
@@ -67,7 +67,7 @@ export function Sidebar() {
       <div className="rounded-xl border border-border bg-card p-6">
         <div className="flex items-center gap-2 mb-4">
           <Tag className="h-5 w-5 text-primary" />
-          <h3 className="font-semibold text-card-foreground">الوسوم</h3>
+          <h3 className="font-semibold text-card-foreground">Tags</h3>
         </div>
         <div className="flex flex-wrap gap-2">
           {popularTags.map((tag) => (
@@ -84,21 +84,21 @@ export function Sidebar() {
 
       {/* Newsletter */}
       <div className="rounded-xl border border-primary/20 bg-primary/5 p-6">
-        <h3 className="font-semibold text-card-foreground mb-2">اشترك في النشرة البريدية</h3>
+        <h3 className="font-semibold text-card-foreground mb-2">Subscribe to Newsletter</h3>
         <p className="text-sm text-muted-foreground mb-4">
-          احصل على أحدث المقالات والنصائح التقنية مباشرة في بريدك
+          Get the latest articles and tech tips delivered directly to your inbox
         </p>
         <form className="space-y-3">
           <input
             type="email"
-            placeholder="بريدك الإلكتروني"
+            placeholder="Your email address"
             className="w-full px-4 py-2.5 text-sm rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
           />
           <button
             type="submit"
             className="w-full px-4 py-2.5 text-sm font-medium rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
           >
-            اشتراك
+            Subscribe
           </button>
         </form>
       </div>

@@ -17,11 +17,11 @@ const ArticlePage = () => {
         <Header />
         <main className="flex-1 flex items-center justify-center">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-foreground mb-4">المقال غير موجود</h1>
+            <h1 className="text-2xl font-bold text-foreground mb-4">Article Not Found</h1>
             <Button asChild>
               <Link to="/">
-                <ArrowRight className="h-4 w-4 ml-2" />
-                العودة للرئيسية
+                <ArrowRight className="h-4 w-4 mr-2" />
+                Back to Home
               </Link>
             </Button>
           </div>
@@ -88,7 +88,7 @@ const ArticlePage = () => {
             <article className="lg:col-span-2">
               {/* Share Buttons */}
               <div className="flex items-center gap-3 mb-8 pb-8 border-b border-border">
-                <span className="text-sm text-muted-foreground">مشاركة:</span>
+                <span className="text-sm text-muted-foreground">Share:</span>
                 <Button variant="outline" size="sm">
                   <Share2 className="h-4 w-4" />
                 </Button>
@@ -145,7 +145,7 @@ const ArticlePage = () => {
               {/* Related Articles */}
               {relatedArticles.length > 0 && (
                 <div className="mt-16 pt-8 border-t border-border">
-                  <h3 className="text-xl font-bold text-foreground mb-6">مقالات ذات صلة</h3>
+                  <h3 className="text-xl font-bold text-foreground mb-6">Related Articles</h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {relatedArticles.map((related) => (
                       <Link

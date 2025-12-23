@@ -30,7 +30,7 @@ const CategoryPage = () => {
               {categoryName}
             </h1>
             <p className="text-muted-foreground">
-              {categoryArticles.length} مقال في هذا التصنيف
+              {categoryArticles.length} {categoryArticles.length === 1 ? 'article' : 'articles'} in this category
             </p>
           </div>
 
@@ -49,7 +49,7 @@ const CategoryPage = () => {
                 </div>
               ) : (
                 <div className="text-center py-16">
-                  <p className="text-muted-foreground">لا توجد مقالات في هذا التصنيف حالياً</p>
+                  <p className="text-muted-foreground">No articles in this category yet</p>
                 </div>
               )}
             </div>

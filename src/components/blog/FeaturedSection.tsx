@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Calendar, Clock } from 'lucide-react';
+import { ArrowRight, Calendar, Clock } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
@@ -59,8 +59,8 @@ export function FeaturedSection({ article }: FeaturedSectionProps) {
 
           <Button asChild variant="featured" size="lg">
             <Link to={`/article/${article.slug}`}>
-              قراءة المقال
-              <ArrowLeft className="h-4 w-4 mr-2" />
+              Read Article
+              <ArrowRight className="h-4 w-4 ml-2" />
             </Link>
           </Button>
         </div>
