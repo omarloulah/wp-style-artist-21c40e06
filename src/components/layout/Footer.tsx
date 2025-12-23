@@ -27,13 +27,13 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-muted-foreground text-sm max-w-md">
-              مدونة تقنية متخصصة في تحسين محركات البحث، أداء المواقع، أمان الويب، والذكاء الاصطناعي. نقدم محتوى عربي عالي الجودة للمطورين وأصحاب المواقع.
+              A tech blog specializing in SEO, site performance, web security, and AI workflows. Quality content for developers and website owners.
             </p>
           </div>
 
           {/* Categories */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">التصنيفات</h4>
+            <h4 className="font-semibold text-foreground mb-4">Categories</h4>
             <ul className="space-y-2">
               {footerLinks.categories.map((link) => (
                 <li key={link.href}>
@@ -50,7 +50,7 @@ export function Footer() {
 
           {/* Resources */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">روابط</h4>
+            <h4 className="font-semibold text-foreground mb-4">Links</h4>
             <ul className="space-y-2">
               {footerLinks.resources.map((link) => (
                 <li key={link.href}>
@@ -69,7 +69,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="mt-12 pt-6 border-t border-border">
           <p className="text-sm text-muted-foreground text-center">
-            © {new Date().getFullYear()} TechPolse. جميع الحقوق محفوظة.
+            © {new Date().getFullYear()} TechPolse. All rights reserved.
           </p>
         </div>
       </div>

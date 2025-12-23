@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 
 const categories = [
-  { name: 'الكل', slug: '' },
+  { name: 'All', slug: '' },
   { name: 'SEO Basics', slug: 'seo-basics' },
   { name: 'AI Workflow', slug: 'ai-workflow' },
   { name: 'Performance', slug: 'performance' },
