@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Search, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import logo from '@/assets/logo.png';
 
 const categories = [
   { name: 'AI Workflow', href: '/category/ai-workflow' },
@@ -26,7 +25,9 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 transition-opacity hover:opacity-80">
-          <img src={logo} alt="TechPolse Logo" className="h-10 w-auto" />
+          <span className="text-2xl font-bold text-foreground">
+            Tech<span className="text-primary">Polse</span>
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
