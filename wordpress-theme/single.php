@@ -17,57 +17,66 @@ get_header();
             <?php if (has_post_thumbnail()) : ?>
                 <?php the_post_thumbnail('techpolse-featured'); ?>
             <?php endif; ?>
-            <div class="article-header-overlay"></div>
         </div>
         
         <div class="container">
             <div class="article-header-content">
                 <div class="article-header-inner animate-fade-in">
-                    <?php
-                    $categories = get_the_category();
-                    if (!empty($categories)) :
-                    ?>
-                        <a href="<?php echo esc_url(get_category_link($categories[0]->term_id)); ?>" class="badge badge-category">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path>
-                            </svg>
-                            <?php echo esc_html($categories[0]->name); ?>
-                        </a>
-                    <?php endif; ?>
-                    
-                    <h1 class="article-header-title"><?php the_title(); ?></h1>
-                    
-                    <div class="article-header-meta">
-                        <span class="meta-item">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
-                                <line x1="16" x2="16" y1="2" y2="6"></line>
-                                <line x1="8" x2="8" y1="2" y2="6"></line>
-                                <line x1="3" x2="21" y1="10" y2="10"></line>
-                            </svg>
-                            <?php echo get_the_date(); ?>
-                        </span>
-                        <span class="meta-item">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            <?php echo techpolse_reading_time(); ?>
-                        </span>
-                        <span class="meta-item">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                            <?php the_author(); ?>
-                        </span>
-                        <span class="meta-item">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                            </svg>
-                            <?php comments_number('0', '1', '%'); ?> <?php esc_html_e('comments', 'techpolse'); ?>
-                        </span>
+                    <!-- Text Content -->
+                    <div class="article-header-text">
+                        <?php
+                        $categories = get_the_category();
+                        if (!empty($categories)) :
+                        ?>
+                            <a href="<?php echo esc_url(get_category_link($categories[0]->term_id)); ?>" class="badge badge-category">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path>
+                                </svg>
+                                <?php echo esc_html($categories[0]->name); ?>
+                            </a>
+                        <?php endif; ?>
+                        
+                        <h1 class="article-header-title"><?php the_title(); ?></h1>
+                        
+                        <div class="article-header-meta">
+                            <span class="meta-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+                                    <line x1="16" x2="16" y1="2" y2="6"></line>
+                                    <line x1="8" x2="8" y1="2" y2="6"></line>
+                                    <line x1="3" x2="21" y1="10" y2="10"></line>
+                                </svg>
+                                <?php echo get_the_date(); ?>
+                            </span>
+                            <span class="meta-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                <?php echo techpolse_reading_time(); ?>
+                            </span>
+                            <span class="meta-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <?php the_author(); ?>
+                            </span>
+                            <span class="meta-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                <?php comments_number('0', '1', '%'); ?> <?php esc_html_e('comments', 'techpolse'); ?>
+                            </span>
+                        </div>
                     </div>
+                    
+                    <!-- Featured Image -->
+                    <?php if (has_post_thumbnail()) : ?>
+                    <div class="article-header-image">
+                        <?php the_post_thumbnail('techpolse-featured'); ?>
+                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
