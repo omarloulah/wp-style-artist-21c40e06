@@ -22,12 +22,15 @@ get_header();
         
         <div class="container">
             <div class="article-header-content">
-                <div class="article-header-inner">
+                <div class="article-header-inner animate-fade-in">
                     <?php
                     $categories = get_the_category();
                     if (!empty($categories)) :
                     ?>
                         <a href="<?php echo esc_url(get_category_link($categories[0]->term_id)); ?>" class="badge badge-category">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path>
+                            </svg>
                             <?php echo esc_html($categories[0]->name); ?>
                         </a>
                     <?php endif; ?>
@@ -36,7 +39,7 @@ get_header();
                     
                     <div class="article-header-meta">
                         <span class="meta-item">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
                                 <line x1="16" x2="16" y1="2" y2="6"></line>
                                 <line x1="8" x2="8" y1="2" y2="6"></line>
@@ -45,18 +48,24 @@ get_header();
                             <?php echo get_the_date(); ?>
                         </span>
                         <span class="meta-item">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <polyline points="12 6 12 12 16 14"></polyline>
                             </svg>
                             <?php echo techpolse_reading_time(); ?>
                         </span>
                         <span class="meta-item">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
                                 <circle cx="12" cy="7" r="4"></circle>
                             </svg>
                             <?php the_author(); ?>
+                        </span>
+                        <span class="meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <?php comments_number('0', '1', '%'); ?> <?php esc_html_e('comments', 'techpolse'); ?>
                         </span>
                     </div>
                 </div>
@@ -70,17 +79,32 @@ get_header();
             <article class="article-main">
                 <!-- Share Buttons -->
                 <div class="share-buttons">
-                    <span class="share-label"><?php esc_html_e('Share:', 'techpolse'); ?></span>
-                    <button type="button" class="btn btn-outline btn-icon" onclick="navigator.share ? navigator.share({title: '<?php the_title(); ?>', url: '<?php the_permalink(); ?>'}) : window.open('https://twitter.com/intent/tweet?url=<?php the_permalink(); ?>&text=<?php the_title(); ?>', '_blank')" aria-label="<?php esc_attr_e('Share', 'techpolse'); ?>">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                            <polyline points="16 6 12 2 8 6"></polyline>
-                            <line x1="12" x2="12" y1="2" y2="15"></line>
+                    <span class="share-label"><?php esc_html_e('Share this article:', 'techpolse'); ?></span>
+                    
+                    <button type="button" class="btn btn-outline btn-icon" onclick="window.open('https://twitter.com/intent/tweet?url=<?php the_permalink(); ?>&text=<?php the_title(); ?>', '_blank')" aria-label="<?php esc_attr_e('Share on Twitter', 'techpolse'); ?>">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
                         </svg>
                     </button>
-                    <button type="button" class="btn btn-outline btn-icon" onclick="if(navigator.clipboard) navigator.clipboard.writeText('<?php the_permalink(); ?>')" aria-label="<?php esc_attr_e('Copy Link', 'techpolse'); ?>">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path>
+                    
+                    <button type="button" class="btn btn-outline btn-icon" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>', '_blank')" aria-label="<?php esc_attr_e('Share on Facebook', 'techpolse'); ?>">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </button>
+                    
+                    <button type="button" class="btn btn-outline btn-icon" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>', '_blank')" aria-label="<?php esc_attr_e('Share on LinkedIn', 'techpolse'); ?>">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect width="4" height="12" x="2" y="9"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </button>
+                    
+                    <button type="button" class="btn btn-outline btn-icon" onclick="copyToClipboard('<?php the_permalink(); ?>')" aria-label="<?php esc_attr_e('Copy Link', 'techpolse'); ?>">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
                         </svg>
                     </button>
                 </div>
@@ -95,7 +119,15 @@ get_header();
                 $tags = get_the_tags();
                 if ($tags) :
                 ?>
-                <div class="article-tags" style="margin-top: 2rem;">
+                <div class="article-tags" style="margin-top: 3rem;">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                            <path d="m15 5 6.3 6.3a2.4 2.4 0 0 1 0 3.4L17 19"></path>
+                            <path d="M9.586 5.586A2 2 0 0 0 8.172 5H3a1 1 0 0 0-1 1v5.172a2 2 0 0 0 .586 1.414L8 18"></path>
+                            <circle cx="6.5" cy="9.5" r=".5" fill="currentColor"></circle>
+                        </svg>
+                        <span style="font-weight: 600; color: var(--foreground);"><?php esc_html_e('Tags', 'techpolse'); ?></span>
+                    </div>
                     <div class="tags-cloud">
                         <?php foreach ($tags as $tag) : ?>
                             <a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>" class="tag-link">
@@ -106,23 +138,84 @@ get_header();
                 </div>
                 <?php endif; ?>
 
+                <!-- Author Bio -->
+                <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary); border-radius: 1rem;">
+                    <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
+                        <?php echo get_avatar(get_the_author_meta('ID'), 80, '', '', array('class' => 'author-avatar', 'style' => 'border-radius: 1rem; flex-shrink: 0;')); ?>
+                        <div>
+                            <h4 style="font-weight: 700; color: var(--foreground); margin-bottom: 0.25rem;"><?php the_author(); ?></h4>
+                            <p style="font-size: 0.9rem; color: var(--muted-foreground); line-height: 1.6;">
+                                <?php echo get_the_author_meta('description') ?: esc_html__('Tech enthusiast and content creator.', 'techpolse'); ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Related Articles -->
                 <?php
                 $related = techpolse_get_related_posts(get_the_ID(), 3);
                 if ($related->have_posts()) :
                 ?>
                 <div class="related-articles">
-                    <h3 class="related-articles-title"><?php esc_html_e('Related Articles', 'techpolse'); ?></h3>
+                    <h3 class="related-articles-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: -5px; margin-right: 0.5rem; color: var(--primary);">
+                            <path d="M16 3h5v5"></path>
+                            <path d="M8 3H3v5"></path>
+                            <path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L3 3"></path>
+                            <path d="m15 9 6-6"></path>
+                        </svg>
+                        <?php esc_html_e('Related Articles', 'techpolse'); ?>
+                    </h3>
                     <div class="related-articles-grid">
                         <?php while ($related->have_posts()) : $related->the_post(); ?>
                             <a href="<?php the_permalink(); ?>" class="related-article-card">
                                 <h4 class="related-article-card-title"><?php the_title(); ?></h4>
-                                <span class="related-article-card-meta"><?php echo techpolse_reading_time(); ?></span>
+                                <span class="related-article-card-meta">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: -1px; margin-right: 4px;">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    <?php echo techpolse_reading_time(); ?>
+                                </span>
                             </a>
                         <?php endwhile; wp_reset_postdata(); ?>
                     </div>
                 </div>
                 <?php endif; ?>
+
+                <!-- Post Navigation -->
+                <div style="margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <?php
+                    $prev_post = get_previous_post();
+                    $next_post = get_next_post();
+                    ?>
+                    
+                    <?php if ($prev_post) : ?>
+                        <a href="<?php echo get_permalink($prev_post); ?>" class="related-article-card" style="text-align: left;">
+                            <span style="font-size: 0.75rem; color: var(--muted-foreground); display: flex; align-items: center; gap: 0.25rem; margin-bottom: 0.5rem;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="m15 18-6-6 6-6"></path>
+                                </svg>
+                                <?php esc_html_e('Previous', 'techpolse'); ?>
+                            </span>
+                            <h4 class="related-article-card-title"><?php echo get_the_title($prev_post); ?></h4>
+                        </a>
+                    <?php else : ?>
+                        <div></div>
+                    <?php endif; ?>
+                    
+                    <?php if ($next_post) : ?>
+                        <a href="<?php echo get_permalink($next_post); ?>" class="related-article-card" style="text-align: right;">
+                            <span style="font-size: 0.75rem; color: var(--muted-foreground); display: flex; align-items: center; gap: 0.25rem; margin-bottom: 0.5rem; justify-content: flex-end;">
+                                <?php esc_html_e('Next', 'techpolse'); ?>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="m9 18 6-6-6-6"></path>
+                                </svg>
+                            </span>
+                            <h4 class="related-article-card-title"><?php echo get_the_title($next_post); ?></h4>
+                        </a>
+                    <?php endif; ?>
+                </div>
 
                 <!-- Comments -->
                 <?php
