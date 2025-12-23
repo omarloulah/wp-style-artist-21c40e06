@@ -214,13 +214,6 @@ const ArticlePage = () => {
                 </div>
               </div>
 
-              {/* Ad Placeholder - AdSense Compatible */}
-              <div className="mb-8 p-4 bg-secondary/50 rounded-xl border border-border text-center">
-                <span className="text-xs text-muted-foreground uppercase tracking-wider">Advertisement</span>
-                <div className="h-[250px] flex items-center justify-center bg-secondary rounded-lg mt-2">
-                  <span className="text-muted-foreground text-sm">Ad Space (728x90 or 300x250)</span>
-                </div>
-              </div>
 
               {/* Article Body */}
               <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground">
@@ -269,22 +262,6 @@ const ArticlePage = () => {
                     );
                   }
                   
-                  // Insert ad after certain paragraphs (AdSense friendly)
-                  if (index === 3) {
-                    return (
-                      <div key={index}>
-                        <p className="text-muted-foreground leading-relaxed mb-6 text-lg">
-                          {paragraph}
-                        </p>
-                        <div className="my-8 p-4 bg-secondary/50 rounded-xl border border-border text-center">
-                          <span className="text-xs text-muted-foreground uppercase tracking-wider">Advertisement</span>
-                          <div className="h-[90px] flex items-center justify-center bg-secondary rounded-lg mt-2">
-                            <span className="text-muted-foreground text-sm">Ad Space (728x90)</span>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  }
                   
                   return (
                     <p key={index} className="text-muted-foreground leading-relaxed mb-6 text-lg">
