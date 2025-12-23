@@ -51,14 +51,6 @@ export function Sidebar() {
 
   return (
     <aside className="space-y-6">
-      {/* Ad Placeholder - Top */}
-      <div className="rounded-xl border border-border bg-secondary/30 p-4 text-center">
-        <span className="text-xs text-muted-foreground uppercase tracking-wider">Advertisement</span>
-        <div className="h-[250px] flex items-center justify-center bg-secondary rounded-lg mt-2">
-          <span className="text-muted-foreground text-sm">300x250 Ad</span>
-        </div>
-      </div>
-
       {/* Popular Articles */}
       <div className="rounded-xl border border-border bg-card p-6 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent" />
@@ -153,13 +145,6 @@ export function Sidebar() {
         </div>
       </div>
 
-      {/* Ad Placeholder - Bottom */}
-      <div className="rounded-xl border border-border bg-secondary/30 p-4 text-center sticky top-24">
-        <span className="text-xs text-muted-foreground uppercase tracking-wider">Advertisement</span>
-        <div className="h-[600px] flex items-center justify-center bg-secondary rounded-lg mt-2">
-          <span className="text-muted-foreground text-sm">300x600 Ad</span>
-        </div>
-      </div>
     </aside>
   );
 }
