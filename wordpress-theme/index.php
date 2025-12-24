@@ -94,6 +94,71 @@ get_header();
             ?>
         <?php endif; ?>
 
+        <!-- Browse Categories Section -->
+        <?php if (is_home() && !is_paged()) : ?>
+        <section class="categories-section">
+            <h2 class="section-title">
+                <span class="section-title-bar"></span>
+                <?php esc_html_e('Browse Categories', 'techpolse'); ?>
+            </h2>
+            
+            <div class="categories-grid">
+                <?php
+                $cat_icons = array(
+                    'ai-workflow' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M11 9h4V6H9v11h6v-3h-4"/></svg>',
+                    'seo-basics' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>',
+                    'performance' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-2 2.5h3L12 7"/><path d="M10 14v-3"/><path d="M14 14v-3"/><path d="M12 14v-3"/></svg>',
+                    'security' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>',
+                    'marketing' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>',
+                    'design' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.555C21.965 6.012 17.461 2 12 2z"/></svg>',
+                );
+                
+                $cat_colors = array(
+                    'ai-workflow' => 'from-purple-500 to-pink-500',
+                    'seo-basics' => 'from-blue-500 to-cyan-500',
+                    'performance' => 'from-yellow-500 to-orange-500',
+                    'security' => 'from-green-500 to-emerald-500',
+                    'marketing' => 'from-red-500 to-rose-500',
+                    'design' => 'from-indigo-500 to-violet-500',
+                );
+                
+                $cat_bg_colors = array(
+                    'ai-workflow' => '#a855f7',
+                    'seo-basics' => '#3b82f6',
+                    'performance' => '#f59e0b',
+                    'security' => '#10b981',
+                    'marketing' => '#ef4444',
+                    'design' => '#6366f1',
+                );
+                
+                $all_categories = get_categories(array(
+                    'orderby' => 'count',
+                    'order'   => 'DESC',
+                    'number'  => 6,
+                    'hide_empty' => false,
+                ));
+                
+                $index = 0;
+                foreach ($all_categories as $category) :
+                    $slug = $category->slug;
+                    $icon = isset($cat_icons[$slug]) ? $cat_icons[$slug] : $cat_icons['design'];
+                    $bg_color = isset($cat_bg_colors[$slug]) ? $cat_bg_colors[$slug] : '#6366f1';
+                ?>
+                    <a href="<?php echo esc_url(get_category_link($category->term_id)); ?>" class="category-card" style="animation-delay: <?php echo $index * 0.1; ?>s;">
+                        <div class="category-card-icon" style="background: <?php echo esc_attr($bg_color); ?>;">
+                            <?php echo $icon; ?>
+                        </div>
+                        <h3 class="category-card-title"><?php echo esc_html($category->name); ?></h3>
+                        <span class="category-card-count"><?php echo esc_html($category->count); ?> <?php esc_html_e('articles', 'techpolse'); ?></span>
+                    </a>
+                <?php 
+                    $index++;
+                endforeach; 
+                ?>
+            </div>
+        </section>
+        <?php endif; ?>
+
         <!-- Category Tabs -->
         <div class="category-tabs">
             <a href="<?php echo esc_url(home_url('/')); ?>" class="category-tab <?php echo is_home() ? 'active' : ''; ?>">
