@@ -1221,7 +1221,7 @@ body.single .main-nav {
 .article-header {
     position: relative;
     background: linear-gradient(135deg, var(--secondary) 0%, var(--background) 50%, var(--secondary) 100%);
-    padding: 2rem 0;
+    padding: 1rem 0 0 0;
 }
 
 .article-header-bg {
@@ -1230,7 +1230,7 @@ body.single .main-nav {
 
 .article-header-content {
     position: relative;
-    padding: 2rem 0;
+    padding: 1rem 0;
 }
 
 .article-header-inner {
