@@ -11,10 +11,52 @@ get_header();
 <main class="site-main">
     <?php while (have_posts()) : the_post(); ?>
 
+    <!-- Featured Image Full Width -->
+    <?php if (has_post_thumbnail()) : ?>
+    <div class="article-hero-image">
+        <?php the_post_thumbnail('full', array('class' => 'article-hero-img')); ?>
+    </div>
+    <?php endif; ?>
+
     <!-- Article Content -->
     <div class="container article-content-wrapper" style="padding-top: 2rem;">
         <div class="content-grid">
             <article class="article-main">
+                <!-- Article Title and Meta -->
+                <div class="article-title-section" style="margin-bottom: 2rem;">
+                    <?php
+                    $categories = get_the_category();
+                    if (!empty($categories)) :
+                    ?>
+                        <a href="<?php echo esc_url(get_category_link($categories[0]->term_id)); ?>" class="badge badge-category" style="margin-bottom: 1rem; display: inline-block;">
+                            <?php echo esc_html($categories[0]->name); ?>
+                        </a>
+                    <?php endif; ?>
+                    
+                    <h1 style="font-size: 2rem; font-weight: 700; color: var(--foreground); margin-bottom: 1rem; line-height: 1.2;">
+                        <?php the_title(); ?>
+                    </h1>
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.875rem; color: var(--muted-foreground);">
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+                                <line x1="16" x2="16" y1="2" y2="6"></line>
+                                <line x1="8" x2="8" y1="2" y2="6"></line>
+                                <line x1="3" x2="21" y1="10" y2="10"></line>
+                            </svg>
+                            <?php echo get_the_date(); ?>
+                        </span>
+                        <span style="display: flex; align-items: center; gap: 0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <?php echo techpolse_reading_time(); ?>
+                        </span>
+                    </div>
+                </div>
+
                 <!-- Article Body -->
                 <div class="article-body">
                     <?php the_content(); ?>
