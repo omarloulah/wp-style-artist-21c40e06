@@ -229,6 +229,11 @@ img {
     gap: 0.5rem;
 }
 
+/* Hide navigation on single post pages */
+body.single .main-nav {
+    display: none !important;
+}
+
 @media (min-width: 768px) {
     .main-nav {
         display: flex;
