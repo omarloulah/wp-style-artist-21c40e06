@@ -270,21 +270,6 @@ const ArticlePage = () => {
                 })}
               </div>
 
-              {/* Author Bio Box */}
-              <div className="mt-12 p-6 bg-gradient-to-br from-secondary to-secondary/50 rounded-2xl border border-border">
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
-                    {article.author.charAt(0)}
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-bold text-foreground text-lg">{article.author}</h4>
-                    <p className="text-sm text-primary mb-2">Tech Writer & SEO Specialist</p>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      Passionate about sharing knowledge on web development, SEO optimization, and digital marketing strategies.
-                    </p>
-                  </div>
-                </div>
-              </div>
 
               {/* Related Articles */}
               {relatedArticles.length > 0 && (

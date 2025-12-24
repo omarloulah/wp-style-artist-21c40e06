@@ -30,22 +30,7 @@ export function Header() {
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1">
-          {categories.map((cat) => (
-            <Link
-              key={cat.href}
-              to={cat.href}
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-secondary hover:text-secondary-foreground ${
-                location.pathname === cat.href
-                  ? 'bg-secondary text-secondary-foreground'
-                  : 'text-muted-foreground'
-              }`}
-            >
-              {cat.name}
-            </Link>
-          ))}
-        </nav>
+        {/* Desktop Navigation - Removed */}
 
         {/* Actions */}
         <div className="flex items-center gap-2">
@@ -66,27 +51,7 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden border-t border-border bg-background animate-slide-up">
-          <nav className="container py-4 flex flex-col gap-2">
-            {categories.map((cat) => (
-              <Link
-                key={cat.href}
-                to={cat.href}
-                onClick={() => setIsMenuOpen(false)}
-                className={`px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
-                  location.pathname === cat.href
-                    ? 'bg-secondary text-secondary-foreground'
-                    : 'text-muted-foreground hover:bg-secondary'
-                }`}
-              >
-                {cat.name}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      )}
+      {/* Mobile Menu - Removed */}
     </header>
   );
 }
