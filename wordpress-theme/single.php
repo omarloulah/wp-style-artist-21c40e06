@@ -153,18 +153,6 @@ get_header();
                 </div>
                 <?php endif; ?>
 
-                <!-- Author Bio -->
-                <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary); border-radius: 1rem;">
-                    <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
-                        <?php echo get_avatar(get_the_author_meta('ID'), 80, '', '', array('class' => 'author-avatar', 'style' => 'border-radius: 1rem; flex-shrink: 0;')); ?>
-                        <div>
-                            <h4 style="font-weight: 700; color: var(--foreground); margin-bottom: 0.25rem;"><?php the_author(); ?></h4>
-                            <p style="font-size: 0.9rem; color: var(--muted-foreground); line-height: 1.6;">
-                                <?php echo get_the_author_meta('description') ?: esc_html__('Tech enthusiast and content creator.', 'techpolse'); ?>
-                            </p>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Related Articles -->
                 <?php
