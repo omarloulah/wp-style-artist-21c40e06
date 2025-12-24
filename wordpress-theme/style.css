@@ -689,6 +689,115 @@ img {
 }
 
 /* ============================================
+   BROWSE CATEGORIES SECTION
+   ============================================ */
+.categories-section {
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--foreground);
+    margin-bottom: 2rem;
+}
+
+.section-title-bar {
+    width: 4px;
+    height: 2rem;
+    background: var(--gradient-primary);
+    border-radius: 4px;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+@media (min-width: 640px) {
+    .categories-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .categories-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+.category-card {
+    display: block;
+    padding: 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeSlideUp 0.5s ease forwards;
+    opacity: 0;
+}
+
+.category-card:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.category-card-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-card-icon {
+    transform: scale(1.1);
+}
+
+.category-card-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.category-card-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--card-foreground);
+    margin-bottom: 0.25rem;
+    transition: color 0.3s ease;
+}
+
+.category-card:hover .category-card-title {
+    color: var(--primary);
+}
+
+.category-card-count {
+    font-size: 0.85rem;
+    color: var(--muted-foreground);
+}
+
+/* ============================================
    CATEGORY TABS - Animated Pills
    ============================================ */
 .category-tabs {
