@@ -86,8 +86,13 @@ get_header();
     <div class="container article-content-wrapper">
         <div class="content-grid">
             <article class="article-main">
+                <!-- Article Body -->
+                <div class="article-body">
+                    <?php the_content(); ?>
+                </div>
+
                 <!-- Share Buttons -->
-                <div class="share-buttons">
+                <div class="share-buttons" style="margin-top: 2rem;">
                     <span class="share-label"><?php esc_html_e('Share:', 'techpolse'); ?></span>
                     
                     <button type="button" class="btn-icon btn-twitter" onclick="window.open('https://twitter.com/intent/tweet?url=<?php the_permalink(); ?>&text=<?php the_title(); ?>', '_blank')" aria-label="<?php esc_attr_e('Share on Twitter', 'techpolse'); ?>">
@@ -124,17 +129,12 @@ get_header();
                     </button>
                 </div>
 
-                <!-- Article Body -->
-                <div class="article-body">
-                    <?php the_content(); ?>
-                </div>
-
                 <!-- Tags -->
                 <?php
                 $tags = get_the_tags();
                 if ($tags) :
                 ?>
-                <div class="article-tags" style="margin-top: 3rem;">
+                <div class="article-tags" style="margin-top: 2rem;">
                     <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
                             <path d="m15 5 6.3 6.3a2.4 2.4 0 0 1 0 3.4L17 19"></path>
