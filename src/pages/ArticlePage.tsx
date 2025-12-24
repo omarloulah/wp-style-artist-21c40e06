@@ -90,11 +90,44 @@ const ArticlePage = () => {
       <Header />
       
       <main className="flex-1">
+        {/* Article Header with Image */}
+        <div className="w-full">
+          <div className="relative w-full aspect-[21/9] max-h-[400px] overflow-hidden">
+            <img
+              src={article.image}
+              alt={article.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
         {/* Article Content */}
-        <div className="container py-12">
+        <div className="container py-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main Content */}
             <article className="lg:col-span-2">
+              {/* Article Title and Meta */}
+              <div className="mb-8">
+                <Link to={`/category/${article.categorySlug}`}>
+                  <Badge variant="category" className="mb-4">
+                    {article.category}
+                  </Badge>
+                </Link>
+                <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                  {article.title}
+                </h1>
+                <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+                  <span className="flex items-center gap-2">
+                    <Calendar className="h-4 w-4 text-primary" />
+                    {article.date}
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <Clock className="h-4 w-4 text-primary" />
+                    {article.readTime}
+                  </span>
+                </div>
+              </div>
+
               {/* Share Buttons */}
               <div className="flex flex-wrap items-center gap-3 mb-8 pb-8 border-b border-border">
                 <span className="text-sm font-medium text-foreground">Share this article:</span>
