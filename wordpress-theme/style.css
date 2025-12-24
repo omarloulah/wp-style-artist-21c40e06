@@ -222,15 +222,8 @@ img {
     background-clip: text;
 }
 
-/* Navigation */
+/* Navigation - Hidden */
 .main-nav {
-    display: none;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-/* Hide navigation on single post pages */
-body.single .main-nav {
     display: none !important;
 }
 
