@@ -237,6 +237,24 @@ img {
     display: block;
 }
 
+/* Hide empty meta section between image and content - CRITICAL FIX */
+.article-content-wrapper .wp-block-group,
+.article-content-wrapper > .content-grid > .article-main > .wp-block-columns,
+.single .entry-content > .wp-block-group:first-child,
+.single-post .article-body > *:first-child:has(a[href*="category"]),
+.article-body > .wp-block-group:first-child,
+.article-body > div:first-child:not(.article-body):not(p):not(h1):not(h2):not(h3):not(.key-takeaways),
+.article-body .sharedaddy,
+.article-body .jp-relatedposts,
+.article-body .sd-sharing,
+.article-body .sd-like,
+.article-body .sd-content,
+.article-body .ssba,
+body.single .article-body > p:first-child:empty,
+body.single .article-body > div:first-child:empty {
+    display: none !important;
+}
+
 /* Navigation - Hidden */
 .main-nav {
     display: none !important;
