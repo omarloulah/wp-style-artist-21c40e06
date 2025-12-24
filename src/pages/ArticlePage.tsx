@@ -83,7 +83,7 @@ const ArticlePage = () => {
     <div className="min-h-screen flex flex-col bg-background">
       {/* Reading Progress Bar */}
       <div 
-        className="fixed top-0 left-0 h-1 bg-gradient-to-r from-primary to-accent z-[100] transition-all duration-150"
+        className="fixed top-0 left-0 h-1 bg-gradient-to-r from-primary to-primary/60 z-[100] transition-all duration-150 shadow-[0_0_10px_hsl(var(--primary)/0.5)]"
         style={{ width: `${readingProgress}%` }}
       />
       
@@ -92,7 +92,7 @@ const ArticlePage = () => {
       <main className="flex-1">
         {/* Article Header with Image */}
         <div className="w-full">
-          <div className="relative w-full aspect-[21/9] max-h-[400px] overflow-hidden">
+          <div className="relative w-full aspect-[21/9] max-h-[350px] overflow-hidden">
             <img
               src={article.image}
               alt={article.title}
@@ -129,51 +129,39 @@ const ArticlePage = () => {
               </div>
 
               {/* Share Buttons */}
-              <div className="flex flex-wrap items-center gap-3 mb-8 pb-8 border-b border-border">
-                <span className="text-sm font-medium text-foreground">Share this article:</span>
+              <div className="flex flex-wrap items-center gap-4 mb-8 pb-8 border-b border-border">
+                <span className="text-sm font-medium text-foreground">Share:</span>
                 <div className="flex items-center gap-2">
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="gap-2 hover:bg-[#1DA1F2] hover:text-white hover:border-[#1DA1F2]"
+                  <button 
                     onClick={shareOnTwitter}
+                    className="group relative w-10 h-10 rounded-full bg-secondary flex items-center justify-center transition-all duration-300 hover:bg-[#1DA1F2] hover:scale-110 hover:shadow-lg hover:shadow-[#1DA1F2]/30"
                   >
-                    <Twitter className="h-4 w-4" />
-                    <span className="hidden sm:inline">Twitter</span>
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="gap-2 hover:bg-[#4267B2] hover:text-white hover:border-[#4267B2]"
+                    <Twitter className="h-4 w-4 text-muted-foreground group-hover:text-white transition-colors" />
+                  </button>
+                  <button 
                     onClick={shareOnFacebook}
+                    className="group relative w-10 h-10 rounded-full bg-secondary flex items-center justify-center transition-all duration-300 hover:bg-[#4267B2] hover:scale-110 hover:shadow-lg hover:shadow-[#4267B2]/30"
                   >
-                    <Facebook className="h-4 w-4" />
-                    <span className="hidden sm:inline">Facebook</span>
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="gap-2 hover:bg-[#0077B5] hover:text-white hover:border-[#0077B5]"
+                    <Facebook className="h-4 w-4 text-muted-foreground group-hover:text-white transition-colors" />
+                  </button>
+                  <button 
                     onClick={shareOnLinkedIn}
+                    className="group relative w-10 h-10 rounded-full bg-secondary flex items-center justify-center transition-all duration-300 hover:bg-[#0077B5] hover:scale-110 hover:shadow-lg hover:shadow-[#0077B5]/30"
                   >
-                    <Linkedin className="h-4 w-4" />
-                    <span className="hidden sm:inline">LinkedIn</span>
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="gap-2"
+                    <Linkedin className="h-4 w-4 text-muted-foreground group-hover:text-white transition-colors" />
+                  </button>
+                  <button 
                     onClick={copyLink}
+                    className="group relative w-10 h-10 rounded-full bg-secondary flex items-center justify-center transition-all duration-300 hover:bg-primary hover:scale-110 hover:shadow-lg hover:shadow-primary/30"
                   >
-                    <Link2 className="h-4 w-4" />
-                    <span className="hidden sm:inline">Copy</span>
-                  </Button>
+                    <Link2 className="h-4 w-4 text-muted-foreground group-hover:text-white transition-colors" />
+                  </button>
                 </div>
               </div>
 
 
               {/* Article Body */}
-              <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground">
+              <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-a:relative prose-a:inline-block prose-a:after:content-[''] prose-a:after:absolute prose-a:after:w-full prose-a:after:scale-x-0 prose-a:after:h-0.5 prose-a:after:bottom-0 prose-a:after:left-0 prose-a:after:bg-primary prose-a:after:origin-bottom-right prose-a:after:transition-transform prose-a:after:duration-300 hover:prose-a:after:scale-x-100 hover:prose-a:after:origin-bottom-left prose-strong:text-foreground prose-img:rounded-xl prose-img:max-h-[400px] prose-img:w-auto prose-img:mx-auto prose-img:object-contain">
                 {article.content.split('\n\n').map((paragraph, index) => {
                   if (paragraph.startsWith('## ')) {
                     return (

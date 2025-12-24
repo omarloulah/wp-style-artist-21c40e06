@@ -169,6 +169,20 @@
     opacity: 0;
   }
 
+  /* Link underline animation */
+  .link-animated {
+    @apply relative inline-block;
+  }
+  
+  .link-animated::after {
+    content: '';
+    @apply absolute w-full scale-x-0 h-0.5 bottom-0 left-0 bg-primary origin-bottom-right transition-transform duration-300;
+  }
+  
+  .link-animated:hover::after {
+    @apply scale-x-100 origin-bottom-left;
+  }
+
   /* AdSense friendly spacing */
   .ad-container {
     min-height: 250px;
