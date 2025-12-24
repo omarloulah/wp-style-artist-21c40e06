@@ -301,42 +301,26 @@
      */
     function initProgressBar() {
         const article = document.querySelector('.article-body');
+        const progressBar = document.getElementById('reading-progress');
+        
         if (!article) return;
 
-        const progressBar = document.createElement('div');
-        progressBar.className = 'reading-progress';
-        document.body.appendChild(progressBar);
-
-        const style = document.createElement('style');
-        style.textContent = `
-            .reading-progress {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 0%;
-                height: 3px;
-                background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-                z-index: 9999;
-                transition: width 0.1s ease;
-            }
-        `;
-        document.head.appendChild(style);
+        // If no progress bar in HTML, create one
+        let bar = progressBar;
+        if (!bar) {
+            bar = document.createElement('div');
+            bar.id = 'reading-progress';
+            bar.className = 'reading-progress-bar';
+            bar.style.width = '0%';
+            document.body.prepend(bar);
+        }
 
         window.addEventListener('scroll', function() {
-            const articleRect = article.getBoundingClientRect();
-            const articleStart = articleRect.top + window.scrollY;
-            const articleHeight = article.offsetHeight;
-            const windowHeight = window.innerHeight;
-            const scrolled = window.scrollY;
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
             
-            if (scrolled < articleStart) {
-                progressBar.style.width = '0%';
-            } else if (scrolled > articleStart + articleHeight - windowHeight) {
-                progressBar.style.width = '100%';
-            } else {
-                const progress = ((scrolled - articleStart) / (articleHeight - windowHeight)) * 100;
-                progressBar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
-            }
+            bar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
         });
     }
 

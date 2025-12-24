@@ -8,6 +8,9 @@
 get_header();
 ?>
 
+<!-- Reading Progress Bar -->
+<div id="reading-progress" class="reading-progress-bar" style="width: 0%;"></div>
+
 <main class="site-main">
     <?php while (have_posts()) : the_post(); ?>
 
